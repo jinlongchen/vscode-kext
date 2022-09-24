@@ -151,7 +151,6 @@ async function showProblemInternal(node: IProblem): Promise<void> {
                 leetCodeConfig.get<string>(`filePath.default.folder`) || genFileSlug(node),
             )
             .trim();
-        console.log("fileFolder:" + fileFolder);
         const fileName: string = leetCodeConfig
             .get<string>(
                 `filePath.${language}.filename`,

@@ -102,7 +102,8 @@ class LeetCodeExecutor implements Disposable {
 
     public async showProblem(problemNode: IProblem, language: string, filePath: string, showDescriptionInComment: boolean = false, needTranslation: boolean): Promise<void> {
         const templateType: string = showDescriptionInComment ? "-cx" : "-c";
-        const cmd: string[] = [await this.getLeetCodeBinaryPath(), "show", problemNode.id, templateType, "-l", language];
+
+        const cmd: string[] = [await this.getLeetCodeBinaryPath(), "show", problemNode.id, templateType, "-l", language, "-maincode", "true"];
 
         if (!needTranslation) {
             cmd.push("-T"); // use -T to force English version
@@ -110,7 +111,7 @@ class LeetCodeExecutor implements Disposable {
 
         if (!await fse.pathExists(filePath)) {
             await fse.createFile(filePath);
-            const codeTemplate: string = await this.executeCommandWithProgressEx("Fetching problem data...", this.nodeExecutable, cmd);
+            const codeTemplate: string = await this.executeCommandWithProgressEx("Fetching problem data... " + language, this.nodeExecutable, cmd);
             await fse.writeFile(filePath, codeTemplate);
         }
     }
