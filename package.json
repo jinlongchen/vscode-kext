@@ -667,6 +667,12 @@
                         },
                         "description": "Customize the shortcuts in editors."
                     },
+                    "leetcode.enableMainCode": {
+                        "type": "boolean",
+                        "default": false,
+                        "scope": "application",
+                        "description": "Enable main code in the source code."
+                    },
                     "leetcode.enableSideMode": {
                         "type": "boolean",
                         "default": true,

@@ -20,11 +20,6 @@ export function genFileName(node: IProblem, language: string): string {
     return `${node.id}.${slug}.${ext}`;
 }
 
-export function genFileSlug(node: IProblem): string {
-    const slug: string = _.kebabCase(node.name);
-    return `${node.id}.${slug}`;
-}
-
 export async function getNodeIdFromFile(fsPath: string): Promise<string> {
     const fileContent: string = await fse.readFile(fsPath, "utf8");
     let id: string = "";
