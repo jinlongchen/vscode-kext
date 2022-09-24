@@ -9,12 +9,12 @@ export class LeetCodeTreeItemDecorationProvider implements FileDecorationProvide
     };
 
     private readonly ITEM_COLOR: { [key: string]: ThemeColor } = {
-        easy: new ThemeColor("charts.green"),
-        medium: new ThemeColor("charts.yellow"),
-        hard: new ThemeColor("charts.red"),
+        easy: new ThemeColor("charts.white"),
+        medium: new ThemeColor("charts.white"),
+        hard: new ThemeColor("charts.white"),
     };
 
-    public provideFileDecoration(uri: Uri): ProviderResult<FileDecoration>  {
+    public provideFileDecoration(uri: Uri): ProviderResult<FileDecoration> {
         if (!this.isDifficultyBadgeEnabled()) {
             return;
         }

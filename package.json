@@ -1,20 +1,15 @@
 {
-    "name": "vscode-leetcode",
-    "displayName": "LeetCode",
-    "description": "Solve LeetCode problems in VS Code",
+    "name": "vscode-kext",
+    "displayName": "Kext",
+    "description": "Kext in VS Code",
     "version": "0.18.1",
     "author": "Sheng Chen",
-    "publisher": "LeetCode",
+    "publisher": "Kext",
     "license": "MIT",
     "icon": "resources/LeetCode.png",
     "engines": {
         "vscode": "^1.57.0"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/LeetCode-OpenSource/vscode-leetcode"
-    },
-    "homepage": "https://github.com/LeetCode-OpenSource/vscode-leetcode/blob/master/README.md",
     "categories": [
         "Other",
         "Snippets"
@@ -47,76 +42,76 @@
             {
                 "command": "leetcode.deleteCache",
                 "title": "Delete Cache",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.toggleLeetCodeCn",
                 "title": "Switch Endpoint",
-                "category": "LeetCode",
+                "category": "Kext",
                 "icon": "$(globe)"
             },
             {
                 "command": "leetcode.signin",
                 "title": "Sign In",
-                "category": "LeetCode",
+                "category": "Kext",
                 "icon": "$(sign-in)"
             },
             {
                 "command": "leetcode.signout",
                 "title": "Sign Out",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.manageSessions",
                 "title": "Manage Sessions",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.refreshExplorer",
                 "title": "Refresh",
-                "category": "LeetCode",
+                "category": "Kext",
                 "icon": "$(refresh)"
             },
             {
                 "command": "leetcode.pickOne",
                 "title": "Pick One",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.showProblem",
                 "title": "Show Problem",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.previewProblem",
                 "title": "Preview Problem",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.searchProblem",
                 "title": "Search Problem",
-                "category": "LeetCode",
+                "category": "Kext",
                 "icon": "$(search)"
             },
             {
                 "command": "leetcode.showSolution",
                 "title": "Show Top Voted Solution",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.testSolution",
-                "title": "Test in LeetCode",
-                "category": "LeetCode"
+                "title": "Test in Kext",
+                "category": "Kext"
             },
             {
                 "command": "leetcode.submitSolution",
-                "title": "Submit to LeetCode",
-                "category": "LeetCode"
+                "title": "Submit to Kext",
+                "category": "Kext"
             },
             {
                 "command": "leetcode.addFavorite",
                 "title": "Add to Favorite List",
-                "category": "LeetCode",
+                "category": "Kext",
                 "icon": {
                     "light": "resources/light/like.png",
                     "dark": "resources/dark/like.png"
@@ -125,7 +120,7 @@
             {
                 "command": "leetcode.removeFavorite",
                 "title": "Remove from Favorite List",
-                "category": "LeetCode",
+                "category": "Kext",
                 "icon": {
                     "light": "resources/light/dislike.png",
                     "dark": "resources/dark/dislike.png"
@@ -134,12 +129,12 @@
             {
                 "command": "leetcode.switchDefaultLanguage",
                 "title": "Switch Default Language",
-                "category": "LeetCode"
+                "category": "Kext"
             },
             {
                 "command": "leetcode.problems.sort",
                 "title": "Sort Problems",
-                "category": "LeetCode",
+                "category": "Kext",
                 "icon": "$(sort-precedence)"
             }
         ],
@@ -147,7 +142,7 @@
             "activitybar": [
                 {
                     "id": "leetcode",
-                    "title": "LeetCode",
+                    "title": "Kext",
                     "icon": "resources/LeetCode.svg"
                 }
             ]

@@ -37,7 +37,7 @@ export async function promptForOpenOutputChannel(message: string, type: DialogTy
 
 export async function promptForSignIn(): Promise<void> {
     const choice: vscode.MessageItem | undefined = await vscode.window.showInformationMessage(
-        "Please sign in to LeetCode.",
+        "Please sign in to Kext.",
         DialogOptions.yes,
         DialogOptions.no,
         DialogOptions.singUp,
