@@ -17,3 +17,21 @@ vsce package
 ```
 
 then you get the vsix file and can install it in the vs code.
+
+in the `settings.json`
+
+```
+    "leetcode.filePath": {
+        "golang": {
+            "folder": "go/${id}.${kebab-case-name}"
+        },
+        "java": {
+            "folder": "java/kext_${id}_${snake_case_name}",
+            "filename": "kext_${id}_${snake_case_name}.${ext}"
+        },
+        "default": {
+            "folder": "",
+            "filename": "${id}.${kebab-case-name}.${ext}"
+        }
+    },
+```
