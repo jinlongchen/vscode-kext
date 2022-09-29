@@ -6,19 +6,9 @@
 
 另外，增加了一个配置项“Enable main code”，打开这个，会在代码文件中增加main函数，方便使用ide调试。(目前只支持java和go，欢迎添加其他语言的main函数)
 
-## install
+## 配置
 
-```
-npm install -g vsce
-```
-
-```
-vsce package
-```
-
-then you get the vsix file and can install it in the vs code.
-
-in the `settings.json`
+请在vs code的`settings.json`作类似下面的配置
 
 ```
     "leetcode.filePath": {

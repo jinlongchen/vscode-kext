@@ -4,7 +4,7 @@
     "description": "Kext in VS Code",
     "version": "0.18.1",
     "author": "Sheng Chen",
-    "publisher": "Kext",
+    "publisher": "JinlongChen",
     "license": "MIT",
     "icon": "resources/LeetCode.png",
     "engines": {
