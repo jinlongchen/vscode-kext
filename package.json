@@ -1,7 +1,7 @@
 {
     "name": "vscode-kext",
-    "displayName": "Kext",
-    "description": "Kext in VS Code",
+    "displayName": "Kext (LeetCode)",
+    "description": "修改了LeetCode的标题和图标，这样一来，老板就不知道你在划水刷题了。",
     "version": "0.18.1",
     "author": "Sheng Chen",
     "publisher": "JinlongChen",
