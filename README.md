@@ -4,7 +4,7 @@
 
 修改了 LeetCode 插件的标题和图标，这样一来，老板就不知道你在划水刷题了。
 
-另外，增加了一个配置项“Enable main code”，打开这个，会在代码文件中增加main函数，方便使用ide调试。(目前只支持java和go，欢迎添加其他语言的main函数)
+增加了一个配置项“Enable Main Code”，打开这个，会在代码文件中增加main函数，方便使用ide调试。(目前只支持java和go，欢迎添加其他语言的main函数)
 
 ## 配置
 
