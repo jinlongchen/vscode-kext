@@ -715,7 +715,7 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "lint": "tslint --project tsconfig.json -e src/*.d.ts -t verbose"
+        "lint": "eslint -c .eslintrc.js --ext .ts src"
     },
     "devDependencies": {
         "@types/fs-extra": "^9.0.13",
@@ -725,6 +725,9 @@
         "@types/node": "^14.18.30",
         "@types/require-from-string": "^1.2.1",
         "@types/vscode": "1.57.0",
+        "@typescript-eslint/eslint-plugin": "^5.39.0",
+        "@typescript-eslint/parser": "^5.39.0",
+        "eslint": "^8.24.0",
         "tslint": "^5.20.1",
         "typescript": "^4.8.3"
     },
