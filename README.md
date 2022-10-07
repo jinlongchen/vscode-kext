@@ -1,4 +1,4 @@
-# Kext
+# Lode
 
 *forked from https://github.com/LeetCode-OpenSource/vscode-leetcode*
 
@@ -16,8 +16,8 @@
             "folder": "go/${id}.${kebab-case-name}"
         },
         "java": {
-            "folder": "java/kext_${id}_${snake_case_name}",
-            "filename": "kext_${id}_${snake_case_name}.${ext}"
+            "folder": "java/lode_${id}_${snake_case_name}",
+            "filename": "lode_${id}_${snake_case_name}.${ext}"
         },
         "default": {
             "folder": "",

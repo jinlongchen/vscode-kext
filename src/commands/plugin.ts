@@ -14,9 +14,9 @@ export async function switchEndpoint(): Promise<void> {
     const picks: Array<IQuickItemEx<string>> = [];
     picks.push(
         {
-            label: `${isCnEnabled ? "" : "$(check) "}Kext`,
+            label: `${isCnEnabled ? "" : "$(check) "}Lode`,
             description: "leetcode.com",
-            detail: `Enable Kext US`,
+            detail: `Enable Lode US`,
             value: Endpoint.LeetCode,
         },
         {

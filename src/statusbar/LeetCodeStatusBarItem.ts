@@ -15,7 +15,7 @@ export class LeetCodeStatusBarItem implements vscode.Disposable {
     public updateStatusBar(status: UserStatus, user?: string): void {
         switch (status) {
             case UserStatus.SignedIn:
-                this.statusBarItem.text = `Kext: ${user}`;
+                this.statusBarItem.text = `Lode: ${user}`;
                 break;
             case UserStatus.SignedOut:
             default:

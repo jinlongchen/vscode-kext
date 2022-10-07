@@ -1,8 +1,8 @@
 {
-    "name": "vscode-kext",
-    "displayName": "LeetCode(Kext)",
+    "name": "vscode-lode",
+    "displayName": "LeetCode(Lode - LoveCode)",
     "description": "修改了LeetCode的标题和图标，这样一来，老板就不知道你在划水刷题了。",
-    "version": "0.18.2",
+    "version": "0.18.3",
     "author": "Sheng Chen",
     "publisher": "JinlongChen",
     "license": "MIT",
@@ -12,9 +12,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/jinlongchen/vscode-kext"
+        "url": "https://github.com/jinlongchen/vscode-lode"
     },
-    "homepage": "https://github.com/jinlongchen/vscode-kext/blob/master/README.md",
+    "homepage": "https://github.com/jinlongchen/vscode-lode/blob/master/README.md",
     "categories": [
         "Other",
         "Snippets"
@@ -47,76 +47,76 @@
             {
                 "command": "leetcode.deleteCache",
                 "title": "Delete Cache",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.toggleLeetCodeCn",
                 "title": "Switch Endpoint",
-                "category": "Kext",
+                "category": "Lode",
                 "icon": "$(globe)"
             },
             {
                 "command": "leetcode.signin",
                 "title": "Sign In",
-                "category": "Kext",
+                "category": "Lode",
                 "icon": "$(sign-in)"
             },
             {
                 "command": "leetcode.signout",
                 "title": "Sign Out",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.manageSessions",
                 "title": "Manage Sessions",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.refreshExplorer",
                 "title": "Refresh",
-                "category": "Kext",
+                "category": "Lode",
                 "icon": "$(refresh)"
             },
             {
                 "command": "leetcode.pickOne",
                 "title": "Pick One",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.showProblem",
                 "title": "Show Problem",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.previewProblem",
                 "title": "Preview Problem",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.searchProblem",
                 "title": "Search Problem",
-                "category": "Kext",
+                "category": "Lode",
                 "icon": "$(search)"
             },
             {
                 "command": "leetcode.showSolution",
                 "title": "Show Top Voted Solution",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.testSolution",
-                "title": "Test in Kext",
-                "category": "Kext"
+                "title": "Test in Lode",
+                "category": "Lode"
             },
             {
                 "command": "leetcode.submitSolution",
-                "title": "Submit to Kext",
-                "category": "Kext"
+                "title": "Submit to Lode",
+                "category": "Lode"
             },
             {
                 "command": "leetcode.addFavorite",
                 "title": "Add to Favorite List",
-                "category": "Kext",
+                "category": "Lode",
                 "icon": {
                     "light": "resources/light/like.png",
                     "dark": "resources/dark/like.png"
@@ -125,7 +125,7 @@
             {
                 "command": "leetcode.removeFavorite",
                 "title": "Remove from Favorite List",
-                "category": "Kext",
+                "category": "Lode",
                 "icon": {
                     "light": "resources/light/dislike.png",
                     "dark": "resources/dark/dislike.png"
@@ -134,12 +134,12 @@
             {
                 "command": "leetcode.switchDefaultLanguage",
                 "title": "Switch Default Language",
-                "category": "Kext"
+                "category": "Lode"
             },
             {
                 "command": "leetcode.problems.sort",
                 "title": "Sort Problems",
-                "category": "Kext",
+                "category": "Lode",
                 "icon": "$(sort-precedence)"
             }
         ],
@@ -147,7 +147,7 @@
             "activitybar": [
                 {
                     "id": "leetcode",
-                    "title": "Kext",
+                    "title": "Lode",
                     "icon": "resources/LeetCode.svg"
                 }
             ]
