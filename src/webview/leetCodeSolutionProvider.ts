@@ -8,7 +8,7 @@ import { markdownEngine } from "./markdownEngine";
 
 class LeetCodeSolutionProvider extends LeetCodeWebview {
 
-    protected readonly viewType: string = "leetcode.solution";
+    protected readonly viewType: string = "lovecode.solution";
     private problemName: string;
     private solution: Solution;
 

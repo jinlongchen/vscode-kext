@@ -50,7 +50,7 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
         if (shortcuts.indexOf("submit") >= 0) {
             codeLens.push(new vscode.CodeLens(range, {
                 title: "Submit",
-                command: "leetcode.submitSolution",
+                command: "lovecode.submitSolution",
                 arguments: [document.uri],
             }));
         }
@@ -58,7 +58,7 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
         if (shortcuts.indexOf("test") >= 0) {
             codeLens.push(new vscode.CodeLens(range, {
                 title: "Test",
-                command: "leetcode.testSolution",
+                command: "lovecode.testSolution",
                 arguments: [document.uri],
             }));
         }
@@ -66,7 +66,7 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
         if (shortcuts.indexOf("star") >= 0 && node) {
             codeLens.push(new vscode.CodeLens(range, {
                 title: node.isFavorite ? "Unstar" : "Star",
-                command: node.isFavorite ? "leetcode.removeFavorite" : "leetcode.addFavorite",
+                command: node.isFavorite ? "lovecode.removeFavorite" : "lovecode.addFavorite",
                 arguments: [node],
             }));
         }
@@ -74,7 +74,7 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
         if (shortcuts.indexOf("solution") >= 0) {
             codeLens.push(new vscode.CodeLens(range, {
                 title: "Solution",
-                command: "leetcode.showSolution",
+                command: "lovecode.showSolution",
                 arguments: [document.uri],
             }));
         }
@@ -82,7 +82,7 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
         if (shortcuts.indexOf("description") >= 0) {
             codeLens.push(new vscode.CodeLens(range, {
                 title: "Description",
-                command: "leetcode.previewProblem",
+                command: "lovecode.previewProblem",
                 arguments: [document.uri],
             }));
         }

@@ -107,7 +107,7 @@ export async function showSolution(input: LeetCodeNode | vscode.Uri): Promise<vo
 }
 
 async function fetchProblemLanguage(): Promise<string | undefined> {
-    const leetCodeConfig: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration("leetcode");
+    const leetCodeConfig: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration("lovecode");
     let defaultLanguage: string | undefined = leetCodeConfig.get<string>("defaultLanguage");
     if (defaultLanguage && languages.indexOf(defaultLanguage) < 0) {
         defaultLanguage = undefined;
@@ -139,7 +139,7 @@ async function showProblemInternal(node: IProblem): Promise<void> {
             return;
         }
 
-        const leetCodeConfig: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration("leetcode");
+        const leetCodeConfig: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration("lovecode");
         const workspaceFolder: string = await selectWorkspaceFolder();
         if (!workspaceFolder) {
             return;
@@ -175,9 +175,9 @@ async function showProblemInternal(node: IProblem): Promise<void> {
             vscode.window.showTextDocument(vscode.Uri.file(finalPath), { preview: false, viewColumn: vscode.ViewColumn.One }),
             promptHintMessage(
                 "hint.commentDescription",
-                'You can config how to show the problem description through "leetcode.showDescription".',
+                'You can config how to show the problem description through "lovecode.showDescription".',
                 "Open settings",
-                (): Promise<any> => openSettingsEditor("leetcode.showDescription"),
+                (): Promise<any> => openSettingsEditor("lovecode.showDescription"),
             ),
         ];
         if (descriptionConfig.showInWebview) {
@@ -191,7 +191,7 @@ async function showProblemInternal(node: IProblem): Promise<void> {
 }
 
 async function showDescriptionView(node: IProblem): Promise<void> {
-    return previewProblem(node, vscode.workspace.getConfiguration("leetcode").get<boolean>("enableSideMode", true));
+    return previewProblem(node, vscode.workspace.getConfiguration("lovecode").get<boolean>("enableSideMode", true));
 }
 async function parseProblemsToPicks(p: Promise<IProblem[]>): Promise<Array<IQuickItemEx<IProblem>>> {
     return new Promise(async (resolve: (res: Array<IQuickItemEx<IProblem>>) => void): Promise<void> => {

@@ -3,6 +3,19 @@ All notable changes to the "leetcode" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.18.4]
+## Changed
+- Change all text of the configuration item from leetcode to lovecode, then it will not conflict with LeetCode.
+
+## [0.18.3]
+### Added
+- Add a feature: "Enable Main Code"
+
+## [0.18.2]
+### Changed
+- change 'LeetCode' -> 'LoveCode'
+- change Leetcode Icon
+
 ## [0.18.0]
 ### Added
 - Add `star` command in shortcuts [PR#601](https://github.com/LeetCode-OpenSource/vscode-leetcode/pull/601)

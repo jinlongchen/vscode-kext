@@ -7,7 +7,7 @@ import { markdownEngine } from "./markdownEngine";
 
 export abstract class LeetCodeWebview implements Disposable {
 
-    protected readonly viewType: string = "leetcode.webview";
+    protected readonly viewType: string = "lovecode.webview";
     protected panel: WebviewPanel | undefined;
     private listeners: Disposable[] = [];
 

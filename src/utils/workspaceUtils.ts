@@ -91,8 +91,8 @@ async function determineLeetCodeFolder(): Promise<string> {
     picks.push(
         {
             label: `Default location`,
-            detail: `${path.join(os.homedir(), ".leetcode")}`,
-            value: `${path.join(os.homedir(), ".leetcode")}`,
+            detail: `${path.join(os.homedir(), ".lovecode")}`,
+            value: `${path.join(os.homedir(), ".lovecode")}`,
         },
         {
             label: "$(file-directory) Browse...",
@@ -101,7 +101,7 @@ async function determineLeetCodeFolder(): Promise<string> {
     );
     const choice: IQuickItemEx<string> | undefined = await vscode.window.showQuickPick(
         picks,
-        { placeHolder: "Select where you would like to save your LeetCode files" },
+        { placeHolder: "Select where you would like to save your LoveCode files" },
     );
     if (!choice) {
         result = "";

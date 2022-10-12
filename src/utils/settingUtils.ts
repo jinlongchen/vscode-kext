@@ -5,7 +5,7 @@ import { workspace, WorkspaceConfiguration } from "vscode";
 import { DescriptionConfiguration } from "../shared";
 
 export function getWorkspaceConfiguration(): WorkspaceConfiguration {
-    return workspace.getConfiguration("leetcode");
+    return workspace.getConfiguration("lovecode");
 }
 
 export function shouldHideSolvedProblem(): boolean {

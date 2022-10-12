@@ -115,7 +115,7 @@ export enum DescriptionConfiguration {
     None = "None",
 }
 
-export const leetcodeHasInited: string = "leetcode.hasInited";
+export const leetcodeHasInited: string = "lovecode.hasInited";
 
 export enum SortingStrategy {
     None = "None",

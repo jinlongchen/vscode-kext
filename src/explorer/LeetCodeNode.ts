@@ -50,7 +50,7 @@ export class LeetCodeNode {
     public get previewCommand(): Command {
         return {
             title: "Preview Problem",
-            command: "leetcode.previewProblem",
+            command: "lovecode.previewProblem",
             arguments: [this],
         };
     }

@@ -33,7 +33,7 @@ export class LeetCodeTreeItemDecorationProvider implements FileDecorationProvide
 
     private isDifficultyBadgeEnabled(): boolean {
         const configuration: WorkspaceConfiguration = workspace.getConfiguration();
-        return configuration.get<boolean>("leetcode.colorizeProblems", false);
+        return configuration.get<boolean>("lovecode.colorizeProblems", false);
     }
 }
 

@@ -8,7 +8,7 @@ import { markdownEngine } from "./markdownEngine";
 
 class LeetCodeSubmissionProvider extends LeetCodeWebview {
 
-    protected readonly viewType: string = "leetcode.submission";
+    protected readonly viewType: string = "lovecode.submission";
     private result: IResult;
 
     public show(resultString: string): void {

@@ -48,7 +48,7 @@ export async function manageSessions(): Promise<void> {
     try {
         await leetCodeExecutor.enableSession((choice.value as ISession).id);
         vscode.window.showInformationMessage(`Successfully switched to session '${choice.label}'.`);
-        await vscode.commands.executeCommand("leetcode.refreshExplorer");
+        await vscode.commands.executeCommand("lovecode.refreshExplorer");
     } catch (error) {
         await promptForOpenOutputChannel("Failed to switch session. Please open the output channel for details.", DialogType.error);
     }

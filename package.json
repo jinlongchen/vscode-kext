@@ -1,8 +1,8 @@
 {
     "name": "vscode-lode",
-    "displayName": "LeetCode(Lode - LoveCode)",
+    "displayName": "LoveCode (LeetCode)",
     "description": "修改了LeetCode的标题和图标，这样一来，老板就不知道你在划水刷题了。",
-    "version": "0.18.3",
+    "version": "0.18.4",
     "author": "Sheng Chen",
     "publisher": "jimchen",
     "license": "MIT",
@@ -16,127 +16,127 @@
     ],
     "keywords": [
         "lovecode",
-        "lode",
         "leetcode",
         "algorithm",
-        "interview"
+        "interview",
+        "lode"
     ],
     "preview": true,
     "activationEvents": [
-        "onCommand:leetcode.toggleLeetCodeCn",
-        "onCommand:leetcode.signin",
-        "onCommand:leetcode.signout",
-        "onCommand:leetcode.manageSessions",
-        "onCommand:leetcode.refreshExplorer",
-        "onCommand:leetcode.pickOne",
-        "onCommand:leetcode.showProblem",
-        "onCommand:leetcode.previewProblem",
-        "onCommand:leetcode.searchProblem",
-        "onCommand:leetcode.testSolution",
-        "onCommand:leetcode.submitSolution",
-        "onCommand:leetcode.switchDefaultLanguage",
-        "onCommand:leetcode.problems.sort",
+        "onCommand:lovecode.toggleLeetCodeCn",
+        "onCommand:lovecode.signin",
+        "onCommand:lovecode.signout",
+        "onCommand:lovecode.manageSessions",
+        "onCommand:lovecode.refreshExplorer",
+        "onCommand:lovecode.pickOne",
+        "onCommand:lovecode.showProblem",
+        "onCommand:lovecode.previewProblem",
+        "onCommand:lovecode.searchProblem",
+        "onCommand:lovecode.testSolution",
+        "onCommand:lovecode.submitSolution",
+        "onCommand:lovecode.switchDefaultLanguage",
+        "onCommand:lovecode.problems.sort",
         "onView:leetCodeExplorer"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
             {
-                "command": "leetcode.deleteCache",
+                "command": "lovecode.deleteCache",
                 "title": "Delete Cache",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.toggleLeetCodeCn",
+                "command": "lovecode.toggleLeetCodeCn",
                 "title": "Switch Endpoint",
-                "category": "Lode",
+                "category": "LoveCode",
                 "icon": "$(globe)"
             },
             {
-                "command": "leetcode.signin",
+                "command": "lovecode.signin",
                 "title": "Sign In",
-                "category": "Lode",
+                "category": "LoveCode",
                 "icon": "$(sign-in)"
             },
             {
-                "command": "leetcode.signout",
+                "command": "lovecode.signout",
                 "title": "Sign Out",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.manageSessions",
+                "command": "lovecode.manageSessions",
                 "title": "Manage Sessions",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.refreshExplorer",
+                "command": "lovecode.refreshExplorer",
                 "title": "Refresh",
-                "category": "Lode",
+                "category": "LoveCode",
                 "icon": "$(refresh)"
             },
             {
-                "command": "leetcode.pickOne",
+                "command": "lovecode.pickOne",
                 "title": "Pick One",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.showProblem",
+                "command": "lovecode.showProblem",
                 "title": "Show Problem",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.previewProblem",
+                "command": "lovecode.previewProblem",
                 "title": "Preview Problem",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.searchProblem",
+                "command": "lovecode.searchProblem",
                 "title": "Search Problem",
-                "category": "Lode",
+                "category": "LoveCode",
                 "icon": "$(search)"
             },
             {
-                "command": "leetcode.showSolution",
+                "command": "lovecode.showSolution",
                 "title": "Show Top Voted Solution",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.testSolution",
-                "title": "Test in Lode",
-                "category": "Lode"
+                "command": "lovecode.testSolution",
+                "title": "Test in LeetCode",
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.submitSolution",
-                "title": "Submit to Lode",
-                "category": "Lode"
+                "command": "lovecode.submitSolution",
+                "title": "Submit to LeetCode",
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.addFavorite",
+                "command": "lovecode.addFavorite",
                 "title": "Add to Favorite List",
-                "category": "Lode",
+                "category": "LoveCode",
                 "icon": {
                     "light": "resources/light/like.png",
                     "dark": "resources/dark/like.png"
                 }
             },
             {
-                "command": "leetcode.removeFavorite",
+                "command": "lovecode.removeFavorite",
                 "title": "Remove from Favorite List",
-                "category": "Lode",
+                "category": "LoveCode",
                 "icon": {
                     "light": "resources/light/dislike.png",
                     "dark": "resources/dark/dislike.png"
                 }
             },
             {
-                "command": "leetcode.switchDefaultLanguage",
+                "command": "lovecode.switchDefaultLanguage",
                 "title": "Switch Default Language",
-                "category": "Lode"
+                "category": "LoveCode"
             },
             {
-                "command": "leetcode.problems.sort",
+                "command": "lovecode.problems.sort",
                 "title": "Sort Problems",
-                "category": "Lode",
+                "category": "LoveCode",
                 "icon": "$(sort-precedence)"
             }
         ],
@@ -144,7 +144,7 @@
             "activitybar": [
                 {
                     "id": "leetcode",
-                    "title": "Lode",
+                    "title": "LoveCode",
                     "icon": "resources/LeetCode.svg"
                 }
             ]
@@ -160,144 +160,144 @@
         "menus": {
             "view/title": [
                 {
-                    "command": "leetcode.toggleLeetCodeCn",
+                    "command": "lovecode.toggleLeetCodeCn",
                     "when": "view == leetCodeExplorer",
                     "group": "navigation@0"
                 },
                 {
-                    "command": "leetcode.signin",
+                    "command": "lovecode.signin",
                     "when": "view == leetCodeExplorer",
                     "group": "navigation@1"
                 },
                 {
-                    "command": "leetcode.searchProblem",
+                    "command": "lovecode.searchProblem",
                     "when": "view == leetCodeExplorer",
                     "group": "navigation@2"
                 },
                 {
-                    "command": "leetcode.refreshExplorer",
+                    "command": "lovecode.refreshExplorer",
                     "when": "view == leetCodeExplorer",
                     "group": "navigation@3"
                 },
                 {
-                    "command": "leetcode.pickOne",
+                    "command": "lovecode.pickOne",
                     "when": "view == leetCodeExplorer",
                     "group": "overflow@0"
                 },
                 {
-                    "command": "leetcode.problems.sort",
+                    "command": "lovecode.problems.sort",
                     "when": "view == leetCodeExplorer",
                     "group": "overflow@1"
                 }
             ],
             "view/item/context": [
                 {
-                    "command": "leetcode.previewProblem",
+                    "command": "lovecode.previewProblem",
                     "when": "view == leetCodeExplorer && viewItem =~ /problem*/",
                     "group": "leetcode@1"
                 },
                 {
-                    "command": "leetcode.showProblem",
+                    "command": "lovecode.showProblem",
                     "when": "view == leetCodeExplorer && viewItem =~ /problem*/",
                     "group": "leetcode@2"
                 },
                 {
-                    "command": "leetcode.showSolution",
+                    "command": "lovecode.showSolution",
                     "when": "view == leetCodeExplorer && viewItem =~ /problem*/",
                     "group": "leetcode@3"
                 },
                 {
-                    "command": "leetcode.addFavorite",
+                    "command": "lovecode.addFavorite",
                     "when": "view == leetCodeExplorer && viewItem == problem",
                     "group": "inline"
                 },
                 {
-                    "command": "leetcode.removeFavorite",
+                    "command": "lovecode.removeFavorite",
                     "when": "view == leetCodeExplorer && viewItem == problem-favorite",
                     "group": "inline"
                 }
             ],
             "commandPalette": [
                 {
-                    "command": "leetcode.showProblem",
+                    "command": "lovecode.showProblem",
                     "when": "never"
                 },
                 {
-                    "command": "leetcode.showSolution",
+                    "command": "lovecode.showSolution",
                     "when": "never"
                 },
                 {
-                    "command": "leetcode.previewProblem",
+                    "command": "lovecode.previewProblem",
                     "when": "never"
                 },
                 {
-                    "command": "leetcode.addFavorite",
+                    "command": "lovecode.addFavorite",
                     "when": "never"
                 },
                 {
-                    "command": "leetcode.removeFavorite",
+                    "command": "lovecode.removeFavorite",
                     "when": "never"
                 }
             ],
             "explorer/context": [
                 {
-                    "command": "leetcode.testSolution",
+                    "command": "lovecode.testSolution",
                     "when": "explorerResourceIsFolder == false",
                     "group": "leetcode@1"
                 },
                 {
-                    "command": "leetcode.submitSolution",
+                    "command": "lovecode.submitSolution",
                     "when": "explorerResourceIsFolder == false",
                     "group": "leetcode@2"
                 }
             ],
             "editor/context": [
                 {
-                    "submenu": "leetcode.editorAction"
+                    "submenu": "lovecode.editorAction"
                 }
             ],
-            "leetcode.editorAction": [
+            "lovecode.editorAction": [
                 {
-                    "command": "leetcode.testSolution",
+                    "command": "lovecode.testSolution",
                     "group": "leetcode@1"
                 },
                 {
-                    "command": "leetcode.submitSolution",
+                    "command": "lovecode.submitSolution",
                     "group": "leetcode@2"
                 },
                 {
-                    "command": "leetcode.showSolution",
+                    "command": "lovecode.showSolution",
                     "group": "leetcode@3"
                 },
                 {
-                    "command": "leetcode.previewProblem",
+                    "command": "lovecode.previewProblem",
                     "group": "leetcode@4"
                 }
             ]
         },
         "submenus": [
             {
-                "id": "leetcode.editorAction",
-                "label": "LeetCode"
+                "id": "lovecode.editorAction",
+                "label": "LoveCode"
             }
         ],
         "configuration": [
             {
-                "title": "LeetCode",
+                "title": "LoveCode",
                 "properties": {
-                    "leetcode.hideSolved": {
+                    "lovecode.hideSolved": {
                         "type": "boolean",
                         "default": false,
                         "scope": "application",
                         "description": "Hide solved problems."
                     },
-                    "leetcode.showLocked": {
+                    "lovecode.showLocked": {
                         "type": "boolean",
                         "default": false,
                         "scope": "application",
                         "description": "Show locked problems."
                     },
-                    "leetcode.defaultLanguage": {
+                    "lovecode.defaultLanguage": {
                         "type": "string",
                         "enum": [
                             "bash",
@@ -321,7 +321,7 @@
                         "scope": "application",
                         "description": "Default language for solving the problems."
                     },
-                    "leetcode.showDescription": {
+                    "lovecode.showDescription": {
                         "type": "string",
                         "default": "In Webview",
                         "enum": [
@@ -337,44 +337,44 @@
                         "scope": "application",
                         "description": "Specify where to show the description."
                     },
-                    "leetcode.showCommentDescription": {
+                    "lovecode.showCommentDescription": {
                         "type": "boolean",
                         "default": false,
                         "scope": "application",
                         "description": "[Deprecated] Include problem description in comments.",
-                        "deprecationMessage": "This setting will be deprecated in 0.17.0, please use 'leetcode.showDescription' instead"
+                        "deprecationMessage": "This setting will be deprecated in 0.17.0, please use 'lovecode.showDescription' instead"
                     },
-                    "leetcode.hint.setDefaultLanguage": {
+                    "lovecode.hint.setDefaultLanguage": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
                         "description": "Show a hint to set the default language."
                     },
-                    "leetcode.hint.configWebviewMarkdown": {
+                    "lovecode.hint.configWebviewMarkdown": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
                         "description": "Show a hint to change webview appearance through markdown config."
                     },
-                    "leetcode.hint.commentDescription": {
+                    "lovecode.hint.commentDescription": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
                         "description": "Show a hint to enable comment description in solution code file."
                     },
-                    "leetcode.hint.commandShortcut": {
+                    "lovecode.hint.commandShortcut": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
                         "description": "Show a hint to configure commands key binding."
                     },
-                    "leetcode.useWsl": {
+                    "lovecode.useWsl": {
                         "type": "boolean",
                         "default": false,
                         "scope": "application",
                         "description": "Use the Windows Subsystem for Linux."
                     },
-                    "leetcode.endpoint": {
+                    "lovecode.endpoint": {
                         "type": "string",
                         "default": "leetcode",
                         "scope": "application",
@@ -384,19 +384,19 @@
                         ],
                         "description": "Endpoint of the user account."
                     },
-                    "leetcode.useEndpointTranslation": {
+                    "lovecode.useEndpointTranslation": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
                         "description": "Use endpoint's translation (if available)"
                     },
-                    "leetcode.workspaceFolder": {
+                    "lovecode.workspaceFolder": {
                         "type": "string",
                         "scope": "application",
                         "description": "The path of the workspace folder to store the problem files.",
                         "default": ""
                     },
-                    "leetcode.filePath": {
+                    "lovecode.filePath": {
                         "type": "object",
                         "scope": "application",
                         "description": "The output folder and filename to save the problem files.",
@@ -637,13 +637,13 @@
                             }
                         }
                     },
-                    "leetcode.enableStatusBar": {
+                    "lovecode.enableStatusBar": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
-                        "description": "Show the LeetCode status bar or not."
+                        "description": "Show the LoveCode status bar or not."
                     },
-                    "leetcode.editor.shortcuts": {
+                    "lovecode.editor.shortcuts": {
                         "type": "array",
                         "default": [
                             "submit",
@@ -669,31 +669,31 @@
                         },
                         "description": "Customize the shortcuts in editors."
                     },
-                    "leetcode.enableMainCode": {
+                    "lovecode.enableMainCode": {
                         "type": "boolean",
                         "default": false,
                         "scope": "application",
                         "description": "Enable main code in the source code."
                     },
-                    "leetcode.enableSideMode": {
+                    "lovecode.enableSideMode": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
                         "description": "Determine whether to group all webview pages into the second editor column when solving problems."
                     },
-                    "leetcode.nodePath": {
+                    "lovecode.nodePath": {
                         "type": "string",
                         "default": "node",
                         "scope": "application",
                         "description": "The Node.js executable path. for example, C:\\Program Files\\nodejs\\node.exe"
                     },
-                    "leetcode.colorizeProblems": {
+                    "lovecode.colorizeProblems": {
                         "type": "boolean",
                         "default": true,
                         "scope": "application",
                         "description": "Add difficulty badge and colorize problems files in explorer tree."
                     },
-                    "leetcode.problems.sortStrategy": {
+                    "lovecode.problems.sortStrategy": {
                         "type": "string",
                         "default": "None",
                         "scope": "application",
@@ -735,6 +735,6 @@
         "markdown-it": "^8.4.2",
         "require-from-string": "^2.0.2",
         "unescape-js": "^1.1.4",
-        "vsc-leetcode-cli": "github:jinlongchen/leetcode-cli"
+        "vsc-leetcode-cli": "git+ssh://git@jinlongchen.github.com:jinlongchen/leetcode-cli.git"
     }
 }

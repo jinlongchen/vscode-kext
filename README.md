@@ -1,4 +1,4 @@
-# Lode
+# LoveCode
 
 *forked from https://github.com/LeetCode-OpenSource/vscode-leetcode*
 
@@ -10,8 +10,8 @@
 
 请在 vs code 的`settings.json`作类似下面的配置
 
-```
-    "leetcode.filePath": {
+```json
+    "lovecode.filePath": {
         "golang": {
             "folder": "go/${id}.${kebab-case-name}"
         },

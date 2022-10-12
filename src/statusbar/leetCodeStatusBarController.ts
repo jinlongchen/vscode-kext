@@ -14,7 +14,7 @@ class LeetCodeStatusBarController implements Disposable {
         this.setStatusBarVisibility();
 
         this.configurationChangeListener = workspace.onDidChangeConfiguration((event: ConfigurationChangeEvent) => {
-            if (event.affectsConfiguration("leetcode.enableStatusBar")) {
+            if (event.affectsConfiguration("lovecode.enableStatusBar")) {
                 this.setStatusBarVisibility();
             }
         }, this);
@@ -39,7 +39,7 @@ class LeetCodeStatusBarController implements Disposable {
 
     private isStatusBarEnabled(): boolean {
         const configuration: WorkspaceConfiguration = workspace.getConfiguration();
-        return configuration.get<boolean>("leetcode.enableStatusBar", true);
+        return configuration.get<boolean>("lovecode.enableStatusBar", true);
     }
 }
 
