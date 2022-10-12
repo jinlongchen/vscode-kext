@@ -4,22 +4,19 @@
     "description": "修改了LeetCode的标题和图标，这样一来，老板就不知道你在划水刷题了。",
     "version": "0.18.3",
     "author": "Sheng Chen",
-    "publisher": "JinlongChen",
+    "publisher": "jimchen",
     "license": "MIT",
     "icon": "resources/LeetCode.png",
     "engines": {
         "vscode": "^1.57.0"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/jinlongchen/vscode-lode"
-    },
-    "homepage": "https://github.com/jinlongchen/vscode-lode/blob/master/README.md",
     "categories": [
         "Other",
         "Snippets"
     ],
     "keywords": [
+        "lovecode",
+        "lode",
         "leetcode",
         "algorithm",
         "interview"
