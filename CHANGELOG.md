@@ -4,6 +4,9 @@ All notable changes to the "leetcode" extension will be documented in this file.
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 ## [0.18.4]
+## Added
+- Timer
+
 ## Changed
 - Change all text of the configuration item from leetcode to lovecode, then it will not conflict with LeetCode.
 

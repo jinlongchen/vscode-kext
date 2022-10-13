@@ -4,7 +4,7 @@
 import * as vscode from "vscode";
 
 class LeetCodeChannel implements vscode.Disposable {
-    private readonly channel: vscode.OutputChannel = vscode.window.createOutputChannel("LeetCode");
+    private readonly channel: vscode.OutputChannel = vscode.window.createOutputChannel("LoveCode");
 
     public appendLine(message: string): void {
         this.channel.appendLine(message);

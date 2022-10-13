@@ -33,7 +33,7 @@ export class LeetCodeTreeDataProvider implements vscode.TreeDataProvider<LeetCod
                 collapsibleState: vscode.TreeItemCollapsibleState.None,
                 command: {
                     command: "lovecode.signin",
-                    title: "Sign in to Lode",
+                    title: "Sign in to LeetCode",
                 },
             };
         }
@@ -61,7 +61,7 @@ export class LeetCodeTreeDataProvider implements vscode.TreeDataProvider<LeetCod
             return [
                 new LeetCodeNode(Object.assign({}, defaultProblem, {
                     id: "notSignIn",
-                    name: "Sign in to Lode",
+                    name: "Sign in to LeetCode",
                 }), false),
             ];
         }

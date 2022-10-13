@@ -1,8 +1,8 @@
 {
-    "name": "vscode-lode",
+    "name": "vscode-lovecode",
     "displayName": "LoveCode (LeetCode)",
     "description": "修改了LeetCode的标题和图标，这样一来，老板就不知道你在划水刷题了。",
-    "version": "0.18.4",
+    "version": "0.18.5",
     "author": "Sheng Chen",
     "publisher": "jimchen",
     "license": "MIT",
@@ -33,6 +33,7 @@
         "onCommand:lovecode.previewProblem",
         "onCommand:lovecode.searchProblem",
         "onCommand:lovecode.testSolution",
+        "onCommand:lovecode.testSolutionWithTestCase",
         "onCommand:lovecode.submitSolution",
         "onCommand:lovecode.switchDefaultLanguage",
         "onCommand:lovecode.problems.sort",
@@ -102,6 +103,11 @@
             },
             {
                 "command": "lovecode.testSolution",
+                "title": "Test in LeetCode",
+                "category": "LoveCode"
+            },
+            {
+                "command": "lovecode.testSolutionWithTestCase",
                 "title": "Test in LeetCode",
                 "category": "LoveCode"
             },

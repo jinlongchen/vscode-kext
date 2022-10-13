@@ -35,7 +35,7 @@ export async function selectWorkspaceFolder(): Promise<string> {
                 OpenOption.openInNewWindow,
                 OpenOption.addToWorkspace,
             ],
-            { placeHolder: "The Lode workspace folder is not opened in VS Code, would you like to open it?" },
+            { placeHolder: "The LoveCode workspace folder is not opened in VS Code, would you like to open it?" },
         );
 
         // Todo: generate file first
