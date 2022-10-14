@@ -2,7 +2,7 @@
     "name": "vscode-lovecode",
     "displayName": "LoveCode (LeetCode)",
     "description": "修改了LeetCode的标题和图标，这样一来，老板就不知道你在划水刷题了。",
-    "version": "0.18.5",
+    "version": "0.18.8",
     "author": "Sheng Chen",
     "publisher": "jimchen",
     "license": "MIT",
@@ -16,7 +16,13 @@
     ],
     "keywords": [
         "lovecode",
+        "love",
+        "code",
+        "love code",
         "leetcode",
+        "leet",
+        "code",
+        "leet code",
         "algorithm",
         "interview",
         "lode"
@@ -33,11 +39,12 @@
         "onCommand:lovecode.previewProblem",
         "onCommand:lovecode.searchProblem",
         "onCommand:lovecode.testSolution",
-        "onCommand:lovecode.testSolutionWithTestCase",
+        "onCommand:lovecode.testSolutionWithTestcase",
+        "onCommand:lovecode.testSolutionWithFilecase",
         "onCommand:lovecode.submitSolution",
         "onCommand:lovecode.switchDefaultLanguage",
         "onCommand:lovecode.problems.sort",
-        "onView:leetCodeExplorer"
+        "onView:loveCodeExplorer"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -107,7 +114,12 @@
                 "category": "LoveCode"
             },
             {
-                "command": "lovecode.testSolutionWithTestCase",
+                "command": "lovecode.testSolutionWithTestcase",
+                "title": "Test in LeetCode",
+                "category": "LoveCode"
+            },
+            {
+                "command": "lovecode.testSolutionWithFilecase",
                 "title": "Test in LeetCode",
                 "category": "LoveCode"
             },
@@ -149,16 +161,16 @@
         "viewsContainers": {
             "activitybar": [
                 {
-                    "id": "leetcode",
+                    "id": "lovecode",
                     "title": "LoveCode",
                     "icon": "resources/LeetCode.svg"
                 }
             ]
         },
         "views": {
-            "leetcode": [
+            "lovecode": [
                 {
-                    "id": "leetCodeExplorer",
+                    "id": "loveCodeExplorer",
                     "name": "Problems"
                 }
             ]
@@ -167,59 +179,59 @@
             "view/title": [
                 {
                     "command": "lovecode.toggleLeetCodeCn",
-                    "when": "view == leetCodeExplorer",
+                    "when": "view == loveCodeExplorer",
                     "group": "navigation@0"
                 },
                 {
                     "command": "lovecode.signin",
-                    "when": "view == leetCodeExplorer",
+                    "when": "view == loveCodeExplorer",
                     "group": "navigation@1"
                 },
                 {
                     "command": "lovecode.searchProblem",
-                    "when": "view == leetCodeExplorer",
+                    "when": "view == loveCodeExplorer",
                     "group": "navigation@2"
                 },
                 {
                     "command": "lovecode.refreshExplorer",
-                    "when": "view == leetCodeExplorer",
+                    "when": "view == loveCodeExplorer",
                     "group": "navigation@3"
                 },
                 {
                     "command": "lovecode.pickOne",
-                    "when": "view == leetCodeExplorer",
+                    "when": "view == loveCodeExplorer",
                     "group": "overflow@0"
                 },
                 {
                     "command": "lovecode.problems.sort",
-                    "when": "view == leetCodeExplorer",
+                    "when": "view == loveCodeExplorer",
                     "group": "overflow@1"
                 }
             ],
             "view/item/context": [
                 {
                     "command": "lovecode.previewProblem",
-                    "when": "view == leetCodeExplorer && viewItem =~ /problem*/",
-                    "group": "leetcode@1"
+                    "when": "view == loveCodeExplorer && viewItem =~ /problem*/",
+                    "group": "lovecode@1"
                 },
                 {
                     "command": "lovecode.showProblem",
-                    "when": "view == leetCodeExplorer && viewItem =~ /problem*/",
-                    "group": "leetcode@2"
+                    "when": "view == loveCodeExplorer && viewItem =~ /problem*/",
+                    "group": "lovecode@2"
                 },
                 {
                     "command": "lovecode.showSolution",
-                    "when": "view == leetCodeExplorer && viewItem =~ /problem*/",
-                    "group": "leetcode@3"
+                    "when": "view == loveCodeExplorer && viewItem =~ /problem*/",
+                    "group": "lovecode@3"
                 },
                 {
                     "command": "lovecode.addFavorite",
-                    "when": "view == leetCodeExplorer && viewItem == problem",
+                    "when": "view == loveCodeExplorer && viewItem == problem",
                     "group": "inline"
                 },
                 {
                     "command": "lovecode.removeFavorite",
-                    "when": "view == leetCodeExplorer && viewItem == problem-favorite",
+                    "when": "view == loveCodeExplorer && viewItem == problem-favorite",
                     "group": "inline"
                 }
             ],
@@ -249,12 +261,12 @@
                 {
                     "command": "lovecode.testSolution",
                     "when": "explorerResourceIsFolder == false",
-                    "group": "leetcode@1"
+                    "group": "lovecode@1"
                 },
                 {
                     "command": "lovecode.submitSolution",
                     "when": "explorerResourceIsFolder == false",
-                    "group": "leetcode@2"
+                    "group": "lovecode@2"
                 }
             ],
             "editor/context": [
@@ -265,19 +277,19 @@
             "lovecode.editorAction": [
                 {
                     "command": "lovecode.testSolution",
-                    "group": "leetcode@1"
+                    "group": "lovecode@1"
                 },
                 {
                     "command": "lovecode.submitSolution",
-                    "group": "leetcode@2"
+                    "group": "lovecode@2"
                 },
                 {
                     "command": "lovecode.showSolution",
-                    "group": "leetcode@3"
+                    "group": "lovecode@3"
                 },
                 {
                     "command": "lovecode.previewProblem",
-                    "group": "leetcode@4"
+                    "group": "lovecode@4"
                 }
             ]
         },
@@ -663,14 +675,16 @@
                                 "test",
                                 "star",
                                 "solution",
-                                "description"
+                                "description",
+                                "filecase"
                             ],
                             "enumDescriptions": [
                                 "Submit your answer to LeetCode.",
-                                "Test your answer with customized test cases.",
+                                "Test your answer with default cases.",
                                 "Star or unstar the current problem.",
                                 "Show the top voted solution for the current problem.",
-                                "Show the problem description page."
+                                "Show the problem description page.",
+                                "Test your answer with customized test cases from file."
                             ]
                         },
                         "description": "Customize the shortcuts in editors."

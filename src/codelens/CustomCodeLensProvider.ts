@@ -85,16 +85,24 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
                         arguments: [document.uri],
                     }));
                 }
+                if (shortcuts.indexOf("filecase") >= 0) {
+                    codeLens.push(new vscode.CodeLens(range, {
+                        title: "Test(File)",
+                        command: "lovecode.testSolutionWithFilecase",
+                        arguments: [document.uri],
+                    }));
+                }
             } else if (lineContent.indexOf("@lc testcase=end") >= 0) {
                 const range: vscode.Range = new vscode.Range(i, 0, i, 0);
                 var testcaseArray = new Array<string>();
                 for (let j: number = testcaseStartLine; j < i; j++) {
                     testcaseArray.push(document.lineAt(j).text);
                 }
+
                 var testString = testcaseArray.join('\n').trim();
                 codeLens.push(new vscode.CodeLens(range, {
                     title: "Test",
-                    command: "lovecode.testSolutionWithTestCase",
+                    command: "lovecode.testSolutionWithTestcase",
                     arguments: [document.uri, testString],
                 }));
             } else if (lineContent.indexOf("@lc testcase=start") >= 0) {

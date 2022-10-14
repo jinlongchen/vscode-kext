@@ -177,7 +177,8 @@ class LeetCodeExecutor implements Disposable {
 
     public async testSolution(filePath: string, testString?: string): Promise<string> {
         if (testString) {
-            return await this.executeCommandWithProgressEx("Submitting to LeetCode...", this.nodeExecutable, [await this.getLeetCodeBinaryPath(), "test", `"${filePath}"`, "-t", `${testString}`]);
+            // vscode.window.showInformationMessage('2[' + `"${testString}"` + ']');
+            return await this.executeCommandWithProgressEx("Submitting to LeetCode...", this.nodeExecutable, [await this.getLeetCodeBinaryPath(), "test", `"${filePath}"`, "-t", `"  ${testString}  "`]);
         }
         return await this.executeCommandWithProgressEx("Submitting to LeetCode...", this.nodeExecutable, [await this.getLeetCodeBinaryPath(), "test", `"${filePath}"`]);
     }
@@ -232,6 +233,8 @@ class LeetCodeExecutor implements Disposable {
     }
 
     private async executeCommandWithProgressEx(message: string, command: string, args: string[], options: cp.SpawnOptions = { shell: true }): Promise<string> {
+        // vscode.window.showInformationMessage(command);
+        // vscode.window.showInformationMessage(command + " " + args.join(" "));
         if (wsl.useWsl()) {
             return await executeCommandWithProgress(message, "wsl", [command].concat(args), options);
         }

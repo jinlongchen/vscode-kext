@@ -3,6 +3,22 @@ All notable changes to the "leetcode" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.18.8]
+### Fixed
+[Bugs fixed]remmove some debug output.
+
+## [0.18.7]
+### Fixed
+[Bugs fixed]an error occurs when the test case has a double-quoted (") prefix/suffix.
+
+## [0.18.6]
+## Added
+- Readme
+
+## [0.18.5]
+## Added
+- Custom testcase
+
 ## [0.18.4]
 ## Added
 - Timer
