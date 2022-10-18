@@ -3,9 +3,21 @@ All notable changes to the "leetcode" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [0.18.8]
+## [0.18.11]
+### Added
+- Submissions link.
+
+## [0.18.10]
+### Changed
+- change code style(java).
+
+## [0.18.9]
 ### Fixed
-[Bugs fixed]remmove some debug output.
+[Bugs fixed]java package bug.
+
+## [0.18.8]
+### Removed
+remmove some debug output.
 
 ## [0.18.7]
 ### Fixed

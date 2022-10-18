@@ -2,7 +2,7 @@
     "name": "vscode-lovecode",
     "displayName": "LoveCode (LeetCode)",
     "description": "修改了LeetCode的标题和图标，这样一来，老板就不知道你在划水刷题了。",
-    "version": "0.18.8",
+    "version": "0.18.11",
     "author": "Sheng Chen",
     "publisher": "jimchen",
     "license": "MIT",
@@ -36,11 +36,14 @@
         "onCommand:lovecode.refreshExplorer",
         "onCommand:lovecode.pickOne",
         "onCommand:lovecode.showProblem",
+        "onCommand:lovecode.codeNow",
         "onCommand:lovecode.previewProblem",
         "onCommand:lovecode.searchProblem",
         "onCommand:lovecode.testSolution",
         "onCommand:lovecode.testSolutionWithTestcase",
         "onCommand:lovecode.testSolutionWithFilecase",
+        "onCommand:lovecode.debugSolution",
+        "onCommand:lovecode.debugSolutionWithTestcase",
         "onCommand:lovecode.submitSolution",
         "onCommand:lovecode.switchDefaultLanguage",
         "onCommand:lovecode.problems.sort",
@@ -93,6 +96,11 @@
                 "category": "LoveCode"
             },
             {
+                "command": "lovecode.codeNow",
+                "title": "Code Now",
+                "category": "LoveCode"
+            },
+            {
                 "command": "lovecode.previewProblem",
                 "title": "Preview Problem",
                 "category": "LoveCode"
@@ -121,6 +129,16 @@
             {
                 "command": "lovecode.testSolutionWithFilecase",
                 "title": "Test in LeetCode",
+                "category": "LoveCode"
+            },
+            {
+                "command": "lovecode.debugSolution",
+                "title": "Debug in LoveCode",
+                "category": "LoveCode"
+            },
+            {
+                "command": "lovecode.debugSolutionWithTestcase",
+                "title": "Debug in LoveCode",
                 "category": "LoveCode"
             },
             {
@@ -673,6 +691,7 @@
                             "enum": [
                                 "submit",
                                 "test",
+                                "debug",
                                 "star",
                                 "solution",
                                 "description",
@@ -755,6 +774,6 @@
         "markdown-it": "^8.4.2",
         "require-from-string": "^2.0.2",
         "unescape-js": "^1.1.4",
-        "vsc-leetcode-cli": "git+ssh://git@jinlongchen.github.com:jinlongchen/leetcode-cli.git"
+        "vsc-leetcode-cli": "git+ssh://git@github.com:jinlongchen/leetcode-cli.git"
     }
 }

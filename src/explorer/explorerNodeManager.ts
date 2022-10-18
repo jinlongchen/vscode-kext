@@ -8,6 +8,8 @@ import { getSortingStrategy } from "../commands/plugin";
 import { Category, defaultProblem, ProblemState, SortingStrategy } from "../shared";
 import { shouldHideSolvedProblem } from "../utils/settingUtils";
 import { LeetCodeNode } from "./LeetCodeNode";
+import { dreamCompanies, dreamCompaniesProblems } from "../shared";
+// import * as vscode from "vscode";
 
 class ExplorerNodeManager implements Disposable {
     private explorerNodeMap: Map<string, LeetCodeNode> = new Map<string, LeetCodeNode>();
@@ -84,13 +86,26 @@ class ExplorerNodeManager implements Disposable {
 
     public getAllCompanyNodes(): LeetCodeNode[] {
         const res: LeetCodeNode[] = [];
+
+        // vscode.window.showInformationMessage(`"${dreamCompanies}" "${metaInfo[0]}" "${metaInfo[1]}" `);
+        // vscode.window.showInformationMessage(`"${dreamCompanies}"`);
+
         for (const company of this.companySet.values()) {
+            if (dreamCompanies.findIndex((val: string) => val === company) != -1) {
+                continue;
+            }
             res.push(new LeetCodeNode(Object.assign({}, defaultProblem, {
                 id: `${Category.Company}.${company}`,
                 name: _.startCase(company),
             }), false));
         }
         this.sortSubCategoryNodes(res, Category.Company);
+        for (const company of dreamCompanies.reverse()) {
+            res.unshift(new LeetCodeNode(Object.assign({}, defaultProblem, {
+                id: `${Category.Company}.${company}`,
+                name: _.startCase(company),
+            }), false));
+        }
         return res;
     }
 
@@ -124,7 +139,24 @@ class ExplorerNodeManager implements Disposable {
         // The sub-category node's id is named as {Category.SubName}
         const metaInfo: string[] = id.split(".");
         const res: LeetCodeNode[] = [];
+
+        // vscode.window.showInformationMessage(`"${id}" "${metaInfo[0]}" "${metaInfo[1]}" `);
+        if (metaInfo[0] == Category.Company) {
+            if (dreamCompaniesProblems.has(metaInfo[1])) {
+                var hProblems = dreamCompaniesProblems.get(metaInfo[1]);
+                if (hProblems) {
+                    for (const problemId of hProblems) {
+                        var node = this.explorerNodeMap.get(problemId);
+                        if (node) {
+                            res.push(node);
+                        }
+                    }
+                    return res;
+                }
+            }
+        }
         for (const node of this.explorerNodeMap.values()) {
+            // node.id
             switch (metaInfo[0]) {
                 case Category.Company:
                     if (node.companies.indexOf(metaInfo[1]) >= 0) {

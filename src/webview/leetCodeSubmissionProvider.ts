@@ -1,17 +1,19 @@
 // Copyright (c) jdneo. All rights reserved.
 // Licensed under the MIT license.
-
 import { ViewColumn } from "vscode";
 import { openKeybindingsEditor, promptHintMessage } from "../utils/uiUtils";
 import { ILeetCodeWebviewOption, LeetCodeWebview } from "./LeetCodeWebview";
 import { markdownEngine } from "./markdownEngine";
+import { IProblem } from "../shared";
 
 class LeetCodeSubmissionProvider extends LeetCodeWebview {
 
     protected readonly viewType: string = "lovecode.submission";
     private result: IResult;
+    private description: IDescription;
 
-    public show(resultString: string): void {
+    public show(resultString: string, descString: string, node: IProblem): void {
+        this.description = this.parseDescription(descString, node);
         this.result = this.parseResult(resultString);
         this.showWebviewInternal();
         this.showKeybindingsHint();
@@ -41,6 +43,9 @@ class LeetCodeSubmissionProvider extends LeetCodeWebview {
             ...messages,
             ...sections,
         ].join("\n"));
+
+        const { url } = this.description;
+        const links: string = markdownEngine.render(`[Submissions](${this.getSubmissionsLink(url)})`);
         return `
             <!DOCTYPE html>
             <html>
@@ -52,6 +57,8 @@ class LeetCodeSubmissionProvider extends LeetCodeWebview {
             </head>
             <body class="vscode-body 'scrollBeyondLastLine' 'wordWrap' 'showEditorSelection'" style="tab-size:4">
                 ${body}
+                <hr />
+                ${links}
             </body>
             </html>
         `;
@@ -96,6 +103,50 @@ class LeetCodeSubmissionProvider extends LeetCodeWebview {
         } while (entry);
         return result;
     }
+
+    private parseDescription(descString: string, problem: IProblem): IDescription {
+        const [
+            /* title */, ,
+            url, ,
+            /* tags */, ,
+            /* langs */, ,
+            category,
+            difficulty,
+            likes,
+            dislikes,
+            /* accepted */,
+            /* submissions */,
+            /* testcase */, ,
+            ...body
+        ] = descString.split("\n");
+        return {
+            title: problem.name,
+            url,
+            tags: problem.tags,
+            companies: problem.companies,
+            category: category.slice(2),
+            difficulty: difficulty.slice(2),
+            likes: likes.split(": ")[1].trim(),
+            dislikes: dislikes.split(": ")[1].trim(),
+            body: body.join("\n").replace(/<pre>[\r\n]*([^]+?)[\r\n]*<\/pre>/g, "<pre><code>$1</code></pre>"),
+        };
+    }
+
+    private getSubmissionsLink(url: string): string {
+        return url.replace("/description/", "/submissions/");
+    }
+}
+
+interface IDescription {
+    title: string;
+    url: string;
+    tags: string[];
+    companies: string[];
+    category: string;
+    difficulty: string;
+    likes: string;
+    dislikes: string;
+    body: string;
 }
 
 interface IResult {

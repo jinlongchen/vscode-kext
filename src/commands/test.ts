@@ -5,7 +5,7 @@ import * as fse from "fs-extra";
 import * as vscode from "vscode";
 import { leetCodeExecutor } from "../leetCodeExecutor";
 import { leetCodeManager } from "../leetCodeManager";
-import { UserStatus } from "../shared";
+import { IProblem, UserStatus } from "../shared";
 // import { IQuickItemEx, UserStatus } from "../shared";
 import { isWindows, usingCmd } from "../utils/osUtils";
 import { DialogType, promptForOpenOutputChannel, showFileSelectDialog } from "../utils/uiUtils";
@@ -13,6 +13,10 @@ import { DialogType, promptForOpenOutputChannel, showFileSelectDialog } from "..
 import { getActiveFilePath } from "../utils/workspaceUtils";
 import * as wsl from "../utils/wslUtils";
 import { leetCodeSubmissionProvider } from "../webview/leetCodeSubmissionProvider";
+import { getNodeIdFromFile } from "../utils/problemUtils";
+import { explorerNodeManager } from "../explorer/explorerNodeManager";
+import { LeetCodeNode } from "../explorer/LeetCodeNode";
+import * as settingUtils from "../utils/settingUtils";
 
 export async function testSolution(uri?: vscode.Uri): Promise<void> {
     try {
@@ -24,31 +28,6 @@ export async function testSolution(uri?: vscode.Uri): Promise<void> {
         if (!filePath) {
             return;
         }
-        // const picks: Array<IQuickItemEx<string>> = [];
-        // picks.push(
-        //     {
-        //         label: "$(three-bars) Default test cases",
-        //         description: "",
-        //         detail: "Test with the default cases",
-        //         value: ":default",
-        //     },
-        //     {
-        //         label: "$(pencil) Write directly...",
-        //         description: "",
-        //         detail: "Write test cases in input box",
-        //         value: ":direct",
-        //     },
-        //     {
-        //         label: "$(file-text) Browse...",
-        //         description: "",
-        //         detail: "Test with the written cases in file",
-        //         value: ":file",
-        //     },
-        // );
-        // const choice: IQuickItemEx<string> | undefined = await vscode.window.showQuickPick(picks);
-        // if (!choice) {
-        //     return;
-        // }
 
         let result: string | undefined;
         result = await leetCodeExecutor.testSolution(filePath);
@@ -84,7 +63,25 @@ export async function testSolution(uri?: vscode.Uri): Promise<void> {
         if (!result) {
             return;
         }
-        leetCodeSubmissionProvider.show(result);
+
+        // const id: string = await getNodeIdFromFile(filePath);
+        // if (!id) {
+        //     vscode.window.showErrorMessage(`Failed to resolve the problem id from file: ${filePath}.`);
+        //     return;
+        // }
+        // const cachedNode: IProblem | undefined = explorerNodeManager.getNodeById(id);
+        // if (!cachedNode) {
+        //     vscode.window.showErrorMessage(`Failed to resolve the problem with id: ${id}.`);
+        //     return;
+        // }
+
+        const cachedNode: IProblem | undefined = await getCachedNode(filePath);
+        if (!cachedNode) {
+            return;
+        }
+        const needTranslation: boolean = settingUtils.shouldUseEndpointTranslation();
+        const descString: string = await leetCodeExecutor.getDescription(cachedNode.id, needTranslation);
+        leetCodeSubmissionProvider.show(result, descString, cachedNode);
     } catch (error) {
         await promptForOpenOutputChannel("Failed to test the solution. Please open the output channel for details.", DialogType.error);
     }
@@ -117,7 +114,25 @@ export async function testSolutionWithTestcase(uri?: vscode.Uri, testString?: st
         if (!result) {
             return;
         }
-        leetCodeSubmissionProvider.show(result);
+
+        // const id: string = await getNodeIdFromFile(filePath);
+        // if (!id) {
+        //     vscode.window.showErrorMessage(`Failed to resolve the problem id from file: ${filePath}.`);
+        //     return;
+        // }
+        // const cachedNode: IProblem | undefined = explorerNodeManager.getNodeById(id);
+        // if (!cachedNode) {
+        //     vscode.window.showErrorMessage(`Failed to resolve the problem with id: ${id}.`);
+        //     return;
+        // }
+        // leetCodeSubmissionProvider.show(result, cachedNode);
+        const cachedNode: IProblem | undefined = await getCachedNode(filePath);
+        if (!cachedNode) {
+            return;
+        }
+        const needTranslation: boolean = settingUtils.shouldUseEndpointTranslation();
+        const descString: string = await leetCodeExecutor.getDescription(cachedNode.id, needTranslation);
+        leetCodeSubmissionProvider.show(result, descString, cachedNode);
     } catch (error) {
         await promptForOpenOutputChannel("Failed to test the solution. Please open the output channel for details.", DialogType.error);
     }
@@ -147,7 +162,101 @@ export async function testSolutionWithFilecase(uri?: vscode.Uri): Promise<void> 
         if (!result) {
             return;
         }
-        leetCodeSubmissionProvider.show(result);
+        // const id: string = await getNodeIdFromFile(filePath);
+        // if (!id) {
+        //     vscode.window.showErrorMessage(`Failed to resolve the problem id from file: ${filePath}.`);
+        //     return;
+        // }
+        // const cachedNode: IProblem | undefined = explorerNodeManager.getNodeById(id);
+        // if (!cachedNode) {
+        //     vscode.window.showErrorMessage(`Failed to resolve the problem with id: ${id}.`);
+        //     return;
+        // }
+        // leetCodeSubmissionProvider.show(result, cachedNode);
+        const cachedNode: IProblem | undefined = await getCachedNode(filePath);
+        if (!cachedNode) {
+            return;
+        }
+        const needTranslation: boolean = settingUtils.shouldUseEndpointTranslation();
+        const descString: string = await leetCodeExecutor.getDescription(cachedNode.id, needTranslation);
+        leetCodeSubmissionProvider.show(result, descString, cachedNode);
+    } catch (error) {
+        await promptForOpenOutputChannel("Failed to test the solution. Please open the output channel for details.", DialogType.error);
+    }
+}
+
+export async function debugSolutionWithTestcase(uri?: vscode.Uri, testString?: string): Promise<void> {
+    if (uri == null || testString == null) {
+        return;
+    }
+    const filePath: string | undefined = await getActiveFilePath(uri);
+    if (!filePath) {
+        return;
+    }
+
+    try {
+        var args = testString.replace(/\r?\n/g, "\n");
+        if (filePath.endsWith(".java")) {
+            vscode.debug.startDebugging(
+                undefined,
+                {
+                    "type": "java",
+                    "name": "Launch with Arguments Prompt",
+                    "request": "launch",
+                    "mainClass": "${file}",
+                    "args": args
+                },
+            );
+        } else if (filePath.endsWith(".go")) {
+            vscode.debug.startDebugging(
+                undefined,
+                {
+                    "name": "Debug go file",
+                    "type": "go",
+                    "request": "launch",
+                    "mode": "debug",
+                    "program": "${file}",
+                    "args": args
+                },
+            );
+        }
+
+    } catch (error) {
+        await promptForOpenOutputChannel("Failed to debug the solution. Please open the output channel for details.", DialogType.error);
+    }
+}
+
+export async function debugSolution(uri?: vscode.Uri): Promise<void> {
+    try {
+        if (leetCodeManager.getStatus() === UserStatus.SignedOut) {
+            return;
+        }
+
+        const filePath: string | undefined = await getActiveFilePath(uri);
+        if (!filePath) {
+            return;
+        }
+
+        const cachedNode: IProblem | undefined = await getCachedNode(filePath);
+        if (!cachedNode) {
+            return;
+        }
+        const needTranslation: boolean = settingUtils.shouldUseEndpointTranslation();
+        const descString: string = await leetCodeExecutor.getDescription(cachedNode.id, needTranslation);
+        const [
+            /* title */, ,
+            /* url */, ,
+            /* tags */, ,
+            /* langs */, ,
+            /* category */,
+            /* difficulty */,
+            /* likes */,
+            /* dislikes */,
+            /* accepted */,
+            /* submissions */,
+            testcase
+        ] = descString.split("\n");
+        debugSolutionWithTestcase(uri, eval(testcase.replace("* Testcase Example:", "").trim()).replace(/"/g, '\\"'));
     } catch (error) {
         await promptForOpenOutputChannel("Failed to test the solution. Please open the output channel for details.", DialogType.error);
     }
@@ -165,4 +274,19 @@ function parseTestString(test: string): string {
         // Assume using PowerShell
         return `'${test.replace(/"/g, '\\"')}'`;
     }
+}
+
+async function getCachedNode(filePath: string): Promise<LeetCodeNode | undefined> {
+    const id: string = await getNodeIdFromFile(filePath);
+    if (!id) {
+        vscode.window.showErrorMessage(`Failed to resolve the problem id from file: ${filePath}.`);
+        return undefined;
+    }
+    const cachedNode: LeetCodeNode | undefined = explorerNodeManager.getNodeById(id);
+    if (!cachedNode) {
+        vscode.window.showErrorMessage(`Failed to resolve the problem with id: ${id}.`);
+        return;
+    }
+
+    return cachedNode;
 }

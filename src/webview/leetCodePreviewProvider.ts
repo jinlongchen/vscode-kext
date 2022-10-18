@@ -136,7 +136,7 @@ class LeetCodePreviewProvider extends LeetCodeWebview {
     protected async onDidReceiveMessage(message: IWebViewMessage): Promise<void> {
         switch (message.command) {
             case "ShowProblem": {
-                await commands.executeCommand("lovecode.showProblem", this.node);
+                await commands.executeCommand("lovecode.codeNow", this.node);
                 break;
             }
         }

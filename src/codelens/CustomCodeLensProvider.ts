@@ -61,6 +61,13 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
                         arguments: [document.uri],
                     }));
                 }
+                if (shortcuts.indexOf("debug") >= 0) {
+                    codeLens.push(new vscode.CodeLens(range, {
+                        title: "Debug",
+                        command: "lovecode.debugSolution",
+                        arguments: [document.uri],
+                    }));
+                }
 
                 if (shortcuts.indexOf("star") >= 0 && node) {
                     codeLens.push(new vscode.CodeLens(range, {
@@ -96,13 +103,18 @@ export class CustomCodeLensProvider implements vscode.CodeLensProvider {
                 const range: vscode.Range = new vscode.Range(i, 0, i, 0);
                 var testcaseArray = new Array<string>();
                 for (let j: number = testcaseStartLine; j < i; j++) {
-                    testcaseArray.push(document.lineAt(j).text);
+                    testcaseArray.push(document.lineAt(j).text.replace(/"/g, '\\"'));
                 }
 
                 var testString = testcaseArray.join('\n').trim();
                 codeLens.push(new vscode.CodeLens(range, {
                     title: "Test",
                     command: "lovecode.testSolutionWithTestcase",
+                    arguments: [document.uri, testString],
+                }));
+                codeLens.push(new vscode.CodeLens(range, {
+                    title: "Debug",
+                    command: "lovecode.debugSolutionWithTestcase",
                     arguments: [document.uri, testString],
                 }));
             } else if (lineContent.indexOf("@lc testcase=start") >= 0) {

@@ -19,9 +19,13 @@ import { getActiveFilePath, selectWorkspaceFolder } from "../utils/workspaceUtil
 import * as wsl from "../utils/wslUtils";
 import { leetCodePreviewProvider } from "../webview/leetCodePreviewProvider";
 import { leetCodeSolutionProvider } from "../webview/leetCodeSolutionProvider";
+import { leetCodeStatusBarController } from "../statusbar/leetCodeStatusBarController";
 import * as list from "./list";
 
-export async function previewProblem(input: IProblem | vscode.Uri, isSideMode: boolean = false): Promise<void> {
+const TIME_STORAGE_KEY = 'lovecode-time:storage-key';
+let ticker: NodeJS.Timeout;
+
+export async function previewProblem(context: vscode.ExtensionContext, input: IProblem | vscode.Uri, isSideMode: boolean = false): Promise<void> {
     let node: IProblem;
     if (input instanceof vscode.Uri) {
         const activeFilePath: string = input.fsPath;
@@ -44,22 +48,42 @@ export async function previewProblem(input: IProblem | vscode.Uri, isSideMode: b
     const needTranslation: boolean = settingUtils.shouldUseEndpointTranslation();
     const descString: string = await leetCodeExecutor.getDescription(node.id, needTranslation);
     leetCodePreviewProvider.show(descString, node, isSideMode);
+
+    if (!isSideMode) {
+        clearInterval(ticker);
+        setElapsedTime(0, context);
+
+        const updateTimer = async () => {
+            const seconds = getElapsedTime(context) + 1;
+            await setElapsedTime(seconds, context);
+            leetCodeStatusBarController.updateStatusBar(leetCodeManager.getStatus(), `${leetCodeManager.getUser()} ${timeToDuration(seconds)}`);
+        };
+
+        ticker = setInterval(updateTimer, 1000);
+    }
 }
 
-export async function pickOne(): Promise<void> {
+export async function pickOne(context: vscode.ExtensionContext): Promise<void> {
     const problems: IProblem[] = await list.listProblems();
     const randomProblem: IProblem = problems[Math.floor(Math.random() * problems.length)];
-    await showProblemInternal(randomProblem);
+    await showProblemInternal(context, randomProblem);
 }
 
-export async function showProblem(node?: LeetCodeNode): Promise<void> {
+export async function showProblem(context: vscode.ExtensionContext, node?: LeetCodeNode): Promise<void> {
     if (!node) {
         return;
     }
-    await showProblemInternal(node);
+    await showProblemInternal(context, node);
 }
 
-export async function searchProblem(): Promise<void> {
+export async function codeNow(context: vscode.ExtensionContext, node?: LeetCodeNode): Promise<void> {
+    if (!node) {
+        return;
+    }
+    await showProblemInternal(context, node, true);
+}
+
+export async function searchProblem(context: vscode.ExtensionContext): Promise<void> {
     if (!leetCodeManager.getUser()) {
         promptForSignIn();
         return;
@@ -74,7 +98,8 @@ export async function searchProblem(): Promise<void> {
     if (!choice) {
         return;
     }
-    await showProblemInternal(choice.value);
+    await previewProblem(context, choice.value);
+    // await showProblemInternal(context, choice.value);
 }
 
 export async function showSolution(input: LeetCodeNode | vscode.Uri): Promise<void> {
@@ -132,7 +157,7 @@ async function fetchProblemLanguage(): Promise<string | undefined> {
     return language;
 }
 
-async function showProblemInternal(node: IProblem): Promise<void> {
+async function showProblemInternal(context: vscode.ExtensionContext, node: IProblem, notShowInWebview: boolean = false): Promise<void> {
     try {
         const language: string | undefined = await fetchProblemLanguage();
         if (!language) {
@@ -170,7 +195,7 @@ async function showProblemInternal(node: IProblem): Promise<void> {
         const descriptionConfig: IDescriptionConfiguration = settingUtils.getDescriptionConfiguration();
         const needTranslation: boolean = settingUtils.shouldUseEndpointTranslation();
 
-        await leetCodeExecutor.showProblem(node, language, finalPath, descriptionConfig.showInComment, needTranslation);
+        await leetCodeExecutor.writeProblemCode(node, language, finalPath, descriptionConfig.showInComment, needTranslation);
         const promises: any[] = [
             vscode.window.showTextDocument(vscode.Uri.file(finalPath), { preview: false, viewColumn: vscode.ViewColumn.One }),
             promptHintMessage(
@@ -180,8 +205,8 @@ async function showProblemInternal(node: IProblem): Promise<void> {
                 (): Promise<any> => openSettingsEditor("lovecode.showDescription"),
             ),
         ];
-        if (descriptionConfig.showInWebview) {
-            promises.push(showDescriptionView(node));
+        if (!notShowInWebview && descriptionConfig.showInWebview) {
+            promises.push(context, showDescriptionView(context, node));
         }
 
         await Promise.all(promises);
@@ -190,8 +215,8 @@ async function showProblemInternal(node: IProblem): Promise<void> {
     }
 }
 
-async function showDescriptionView(node: IProblem): Promise<void> {
-    return previewProblem(node, vscode.workspace.getConfiguration("lovecode").get<boolean>("enableSideMode", true));
+async function showDescriptionView(context: vscode.ExtensionContext, node: IProblem): Promise<void> {
+    return previewProblem(context, node, vscode.workspace.getConfiguration("lovecode").get<boolean>("enableSideMode", true));
 }
 async function parseProblemsToPicks(p: Promise<IProblem[]>): Promise<Array<IQuickItemEx<IProblem>>> {
     return new Promise(async (resolve: (res: Array<IQuickItemEx<IProblem>>) => void): Promise<void> => {
@@ -285,4 +310,18 @@ async function resolveCompanyForProblem(problem: IProblem): Promise<string | und
         placeHolder: "Multiple tags available, please select one",
         ignoreFocusOut: true,
     });
+}
+
+function timeToDuration(seconds: number): string {
+    var hh = Math.floor(seconds / 3600),
+        mm = Math.floor(seconds / 60) % 60,
+        ss = Math.floor(seconds) % 60;
+    return (hh ? (hh < 10 ? "0" : "") + hh + ":" : "") + ((mm < 10) && hh ? "0" : "") + mm + ":" + (ss < 10 ? "0" : "") + ss
+}
+
+async function setElapsedTime(seconds: number, context: vscode.ExtensionContext): Promise<void> {
+    await context.globalState.update(TIME_STORAGE_KEY, Math.max(0, seconds));
+}
+function getElapsedTime(context: vscode.ExtensionContext): number {
+    return parseInt(context.globalState.get(TIME_STORAGE_KEY, '0'));
 }
