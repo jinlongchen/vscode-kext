@@ -2,8 +2,6 @@
 
 *forked from https://github.com/LeetCode-OpenSource/vscode-leetcode*
 
-如果安装了0.18.4之前的版本，可以把它卸载再装当前版本，因为0.18.4以及之后的版本换了id，相当于不是同一个插件了。
-
 1. 修改了 LeetCode 插件的标题和图标
 
 2. 增加了一个配置项“Enable Main Code”，打开这个，会在代码文件中增加main函数，方便使用ide调试。(目前只支持java和go，欢迎添加其他语言的main函数)
@@ -18,7 +16,7 @@
     * description
     * **filecase**
 
-5. 在代码文件中增加了一个代码区域可以写自定义Testcase，插件会添加Test按钮
+5. 在代码文件中增加了一个代码区域可以写自定义Testcase，插件会添加Test和Debug按钮，非常方便用例的测试和调试（目前仅java）
 
 类似这样的，你可以把这个多复制几遍：
 
