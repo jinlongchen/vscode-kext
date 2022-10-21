@@ -97,20 +97,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     }
 }
 
-// function timeToDuration(seconds: number): string {
-//     var hh = Math.floor(seconds / 3600),
-//         mm = Math.floor(seconds / 60) % 60,
-//         ss = Math.floor(seconds) % 60;
-//     return (hh ? (hh < 10 ? "0" : "") + hh + ":" : "") + ((mm < 10) && hh ? "0" : "") + mm + ":" + (ss < 10 ? "0" : "") + ss
-// }
-
-// async function setElapsedTime(seconds: number, context: vscode.ExtensionContext): Promise<void> {
-//     await context.globalState.update(TIME_STORAGE_KEY, Math.max(0, seconds));
-// }
-// function getElapsedTime(context: vscode.ExtensionContext): number {
-//     return parseInt(context.globalState.get(TIME_STORAGE_KEY, '0'));
-// }
-
 export function deactivate(): void {
     // Do nothing.
 }

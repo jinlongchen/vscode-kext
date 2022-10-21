@@ -2,7 +2,7 @@
     "name": "vscode-lovecode",
     "displayName": "LoveCode (LeetCode)",
     "description": "在LeetCode的基础上增加了一些方便刷题的功能",
-    "version": "0.18.12",
+    "version": "0.18.13",
     "author": "Sheng Chen",
     "publisher": "jimchen",
     "license": "MIT",
